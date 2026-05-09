@@ -62,7 +62,9 @@ else:
 print('Selected Device : ', device)
 
 # Load keypoint detection model.
-weights = torch.load('yolov7-w6-pose.pt', map_location=torch.device('cpu'), weights_only=False)
+weights = torch.load(r"C:\Users\Dhoha\Downloads\yolov7-w6-pose.pt",
+                     map_location=torch.device('cpu'),
+                     weights_only=False)
 model = weights['model']
 # Load the model in evaluation mode.
 _ = model.float().eval()
@@ -75,7 +77,7 @@ videos = [
         'far-away']
 
 file_name = videos[0] + '.mp4'
-vid_path = '../media/' + file_name
+vid_path = r"C:\Users\Dhoha\OneDrive\المستندات\GitHub\computer-vision-labs\lab08-pose-estimation\media\skydiving.mp4"
 
 cap = cv2.VideoCapture(vid_path)
 fps = int(cap.get(cv2.CAP_PROP_FPS))
@@ -87,7 +89,9 @@ h, w, _ = frame.shape
 #                       cv2.VideoWriter_fourcc(*'mp4v'), 
 #                       fps, (w, h))
 
-out = cv2.VideoWriter(f"{save_name}_yolo7.avi",cv2.VideoWriter_fourcc('M','J','P','G'), 10, w,h)
+out = cv2.VideoWriter('output_yolov7.avi',
+                       cv2.VideoWriter_fourcc(*'MJPG'),
+                       fps, (w, h))
 
 #-------------------------------------------------------------------------------#
 
